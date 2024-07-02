@@ -1,13 +1,23 @@
+import bodyParser from 'body-parser';
 import express, { Express, Request, Response } from 'express';
+import { getUser } from './user/getUser';
+import { postUser } from './user/postUser';
 
-const app: Express = express();
+export const app: Express = express();
 const port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
-app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+app.get('/user/:id', getUser);
+app.post('/user', postUser);
+
+if (module === require.main) {
+  app.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`[server]: Server is running at http://localhost:${port}`);
+  });
+}

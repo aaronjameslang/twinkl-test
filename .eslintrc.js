@@ -11,6 +11,6 @@ module.exports = {
       '@typescript-eslint',
     ],
     rules: {
-      // custom rules...
+      'import/prefer-default-export': 'off', // TODO
     },
   };
