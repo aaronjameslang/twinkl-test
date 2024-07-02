@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import express, { Express, Request, Response } from 'express';
+import { handleZodError } from './handleZodError';
 import { getUser } from './user/getUser';
 import { postUser } from './user/postUser';
 
@@ -14,6 +15,8 @@ app.get('/', (req: Request, res: Response) => {
 
 app.get('/user/:id', getUser);
 app.post('/user', postUser);
+
+app.use(handleZodError);
 
 if (module === require.main) {
   app.listen(port, () => {
