@@ -6,7 +6,7 @@ export function fakeUser(): UserWithoutId {
     created: faker.date.recent().toISOString(),
     email: faker.internet.email(),
     name: faker.person.fullName(),
-    password: faker.internet.password(),
+    password: faker.internet.password() + 1,
     type: faker.helpers.arrayElement([
       'parent',
       'student',

@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`POST /user should return error details for user.created = "" 1`] = `
+{
+  "zod": [
+    {
+      "code": "too_small",
+      "exact": false,
+      "inclusive": true,
+      "message": "String must contain at least 1 character(s)",
+      "minimum": 1,
+      "path": [
+        "created",
+      ],
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.created = null 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Expected string, received null",
+      "path": [
+        "created",
+      ],
+      "received": "null",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.created = undefined 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Required",
+      "path": [
+        "created",
+      ],
+      "received": "undefined",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.email = "" 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_string",
+      "message": "Invalid email",
+      "path": [
+        "email",
+      ],
+      "validation": "email",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.email = null 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Expected string, received null",
+      "path": [
+        "email",
+      ],
+      "received": "null",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.email = undefined 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Required",
+      "path": [
+        "email",
+      ],
+      "received": "undefined",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.name = "" 1`] = `
+{
+  "zod": [
+    {
+      "code": "too_small",
+      "exact": false,
+      "inclusive": true,
+      "message": "String must contain at least 1 character(s)",
+      "minimum": 1,
+      "path": [
+        "name",
+      ],
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.name = null 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Expected string, received null",
+      "path": [
+        "name",
+      ],
+      "received": "null",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.name = undefined 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Required",
+      "path": [
+        "name",
+      ],
+      "received": "undefined",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.password = "" 1`] = `
+{
+  "zod": [
+    {
+      "code": "too_small",
+      "exact": false,
+      "inclusive": true,
+      "message": "String must contain at least 8 character(s)",
+      "minimum": 8,
+      "path": [
+        "password",
+      ],
+      "type": "string",
+    },
+    {
+      "code": "invalid_string",
+      "message": "Password must contain a number",
+      "path": [
+        "password",
+      ],
+      "validation": "regex",
+    },
+    {
+      "code": "invalid_string",
+      "message": "Password must contain an uppercase letter",
+      "path": [
+        "password",
+      ],
+      "validation": "regex",
+    },
+    {
+      "code": "invalid_string",
+      "message": "Password must contain a lowercase letter",
+      "path": [
+        "password",
+      ],
+      "validation": "regex",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.password = null 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Expected string, received null",
+      "path": [
+        "password",
+      ],
+      "received": "null",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.password = undefined 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "string",
+      "message": "Required",
+      "path": [
+        "password",
+      ],
+      "received": "undefined",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.type = "" 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_enum_value",
+      "message": "Invalid enum value. Expected 'parent' | 'student' | 'teacher' | 'tutor', received ''",
+      "options": [
+        "parent",
+        "student",
+        "teacher",
+        "tutor",
+      ],
+      "path": [
+        "type",
+      ],
+      "received": "",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.type = null 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "'parent' | 'student' | 'teacher' | 'tutor'",
+      "message": "Expected 'parent' | 'student' | 'teacher' | 'tutor', received null",
+      "path": [
+        "type",
+      ],
+      "received": "null",
+    },
+  ],
+}
+`;
+
+exports[`POST /user should return error details for user.type = undefined 1`] = `
+{
+  "zod": [
+    {
+      "code": "invalid_type",
+      "expected": "'parent' | 'student' | 'teacher' | 'tutor'",
+      "message": "Required",
+      "path": [
+        "type",
+      ],
+      "received": "undefined",
+    },
+  ],
+}
+`;

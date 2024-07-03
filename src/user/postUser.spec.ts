@@ -27,4 +27,26 @@ describe('POST /user', () => {
     const actual = loadUser(id);
     expect(actual).toEqual({ ...expected, id });
   });
+
+  // --- Unhappy Paths ---
+  Object.keys(fakeUser()).forEach((key) => {
+    ['', null, undefined].forEach((value) => {
+      const user = fakeUser();
+      // @ts-expect-error
+      user[key] = value;
+      const description = `user.${key} = ${JSON.stringify(value)}`;
+      it(`should return 422 for ${description}`, async () => {
+        await request(testServer)
+          .post('/user')
+          .send(user)
+          .expect(422);
+      });
+      it(`should return error details for ${description}`, async () => {
+        const response = await request(testServer)
+          .post('/user')
+          .send(user);
+        expect(response.body).toMatchSnapshot();
+      });
+    });
+  });
 });
