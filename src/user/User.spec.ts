@@ -1,6 +1,6 @@
 import { UserWithoutId } from './User';
 
-export const VALID_TEST_USER = {
+export const VALID_TEST_USER: UserWithoutId = {
   name: 'Alice',
   email: 'alice@example.com',
   password: 'Password1',
