@@ -3,7 +3,7 @@ import { Password } from './Password';
 import { UserId } from './UserId';
 import { UserType } from './UserType';
 
-export const UserWithoutId = z.object({
+export const UserInput = z.object({
   /**
    * This date validation is not perfect, but honestly we shouldn't be
    * trusting created dates from the front end anyway, we can fill this
@@ -18,6 +18,24 @@ export const UserWithoutId = z.object({
 });
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
+export type UserInput = z.infer<typeof UserInput>;
+
+export type UserOutput =
+ Omit<UserInput, 'password'> & {
+   id: UserId;
+ };
+
+export type UserRecord =
+ UserOutput & {
+   digest: string;
+   salt: string;
+ };
+
+/** @deprecated */
+export const UserWithoutId = UserInput;
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export type UserWithoutId = z.infer<typeof UserWithoutId>;
 
+/** @deprecated */
 export type User = UserWithoutId & { id: UserId };
