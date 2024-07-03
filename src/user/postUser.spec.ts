@@ -1,37 +1,39 @@
 import request from 'supertest';
 import { app } from '../app';
-import { fakeUser } from './User.spec';
+import { fakeUser } from './fakeUser';
 import { loadUser } from './loadUser';
 
 describe('POST /user', () => {
   it('should return 201', async () => {
     await request(app)
       .post('/user')
-      .send(fakeUser())
+      .send(fakeUser().input)
       .expect(201);
   });
   it('should return user ID', async () => {
     const response = await request(app)
       .post('/user')
-      .send(fakeUser());
+      .send(fakeUser().input);
     const { id } = response.body;
     expect(typeof id).toBe('string');
     expect(id).toHaveLength(36);
   });
   it('should save user', async () => {
-    const expected = fakeUser();
+    const { input } = fakeUser();
     const response = await request(app)
       .post('/user')
-      .send(expected);
+      .send(input);
     const { id } = response.body;
-    const actual = loadUser(id);
-    expect(actual).toEqual({ ...expected, id });
+    const actualRecord = loadUser(id);
+    const actualOutput = { ...actualRecord, digest: undefined, salt: undefined };
+    const expectedOutput = { ...input, id, password: undefined };
+    expect(actualOutput).toEqual(expectedOutput);
   });
 
   // --- Unhappy Paths ---
-  Object.keys(fakeUser()).forEach((key) => {
+  Object.keys(fakeUser().input).forEach((key) => {
     ['', null, undefined].forEach((value) => {
-      const user = fakeUser();
+      const user = fakeUser().input;
       // @ts-expect-error
       user[key] = value;
       const description = `user.${key} = ${JSON.stringify(value)}`;

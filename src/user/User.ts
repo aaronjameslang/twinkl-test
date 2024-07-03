@@ -30,12 +30,3 @@ export type UserRecord =
    digest: string;
    salt: string;
  };
-
-/** @deprecated */
-export const UserWithoutId = UserInput;
-
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-export type UserWithoutId = z.infer<typeof UserWithoutId>;
-
-/** @deprecated */
-export type User = UserWithoutId & { id: UserId };

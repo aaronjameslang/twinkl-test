@@ -81,3 +81,5 @@ Functional and non-functional considerations before this goes to production
 - Add a database migration system
 - Formatting e.g. prettier
 - Infrastructure as code, e.g. terraform
+- Submitting an invalid datatime sting for "created" will give a poor
+error, this could fixed, but better to not include this field in input
