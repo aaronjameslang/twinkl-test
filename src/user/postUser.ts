@@ -7,5 +7,7 @@ export function postUser(req: Request, res: Response) {
   const user = UserWithoutId.parse(req.body);
   const id = randomUUID();
   saveUser({ ...user, id });
-  res.sendStatus(201); // Created
+  res
+    .status(201) // Created
+    .send({ id });
 }

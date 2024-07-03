@@ -8,4 +8,5 @@ describe('GET /user', () => {
       .get(`/user/${randomUUID()}`)
       .expect(404);
   });
+  it.todo('should return the user');
 });
