@@ -1,85 +1,38 @@
-# Twinkl TypeScript Test
+# Twinklr
 
-- [Task](#task)
-- [Development Environment Setup](#setup)
-- [What we are looking for](#what-we-are-looking-for)
+A simple application to demostrate how to build an API with `express`.
 
-## Task
+## Features
 
-Your task is to implement a backend API (no front-end is required).
+1. A `POST` endpoint, that accepts JSON, containing the user full name,
+password, email address, created date, and the user type (one of a
+student, teacher, parent or private tutor).
+1. Validation. The app checks that the fields submitted are not
+empty. The app also checks that the password matches the following
+rules:
+    1. Between 8 and 64 characters
+    1. Must contain at least one digit (0-9)
+    1. Must contain at least one lowercase letter (a-z)
+    1. Must contain at least one uppercase letter (A-Z)
+1. When validation fails the app returns an appropriate status
+code with error(s) that can be used by the client
+1. Signup information is saved to a data store
+1. A `GET` endpoint that takes a user ID and returns the user details as JSON.
+1. Approproate testing and documentation
+1. Is able to run locally
 
-These are the requirements for the system:
+## Usage
 
-1. User Signup Endpoint
-    1. A `POST` endpoint, that accepts JSON, containing the user full name, password, email address, created date, and the user type (one of a student, teacher, parent or private tutor).
-    1. Validation. The app should check that the fields submitted are not empty. The app should also check that the password matches the following rules:
-        1. Between 8 and 64 characters
-        1. Must contain at least one digit (0-9)
-        1. Must contain at least one lowercase letter (a-z)
-        1. Must contain at least one uppercase letter (A-Z)
-    1. When validation fails the app should return an appropriate status code with error/s that can be used by the client
-1. Save the signup information to a data store - use your own discretion in choosing the appropriate technology and data model.
-1. User Signup Details
-    1. A `GET` endpoint that takes a user ID and returns the user details as JSON.
-1. Create whatever level of testing and documentation you consider appropriate
+Install dependencies with `npm install`
 
-## What we are looking for
-
-* Submit something that we can run locally
-* Commiting changes with good messages as you go is very helpful
-* You can update the README or add a NOTES.md detailing any decisions/tradeoffs you made, or changes you would make with more time
-* Clean, secure, modular code written to your own standards of what good looks like. Add concise comments in the code if you want to explain a decision. 
-* Pragmatism. We are not looking for complex solutions, and there is no hidden trick requirement in our task ;) 
-* Feel free to install and use additional packages
-
-## Setup
-
-### Prerequisites
-
-Before you begin, ensure you have the following installed on your machine:
-
-- [Node.js](https://nodejs.org/): Ensure that Node.js, preferably version 16 or higher, is installed on your system, as this project utilizes the latest versions of TypeScript and Nodemon.
-- [npm](https://www.npmjs.com/): npm is the package manager for Node.js and comes with the Node.js installation.
-
-### Installation
-
-This will install a basic [Express](https://expressjs.com/) app with Typescript.
-
-If you have been provided with a Github URL, clone the repository to your local machine:
-
-```
-git clone https://github.com/twinkltech/twinkl-typescript-tech-test.git
-```
-
-If you have been provided with a zip file, download to your computer and unzip.
-
-Navigate to the directory:
-
-```
-cd twinkl-typescript-tech-test
-```
-
-Install the dependencies:
-
-```
-npm i
-```
-
-### Usage
-
-In development the following command will start the server and use `nodemon` to auto-reload the server based on file changes
+In development the following command will start the server and use
+`nodemon` to auto-reload the server based on file changes
 
 ```
 npm run dev
 ```
 
-The server will start at `http://localhost:3000` by default. You can change the port in `src/index.ts` 
-
-There are no tests in the project at the moment, but a command is available to run:
-
-```
-npm run test
-```
+The server will start at `http://localhost:3000` by default.
 
 There are also commands to build and start a server without nodemon:
 
@@ -88,3 +41,43 @@ npm run build
 npm start
 ```
 
+### Testing
+
+Run the unit tests with `npm test`.
+
+There is also a `npm run test:build` command which will:
+- build the app,
+- run it in "production mode", and
+- test it responds to http requests
+
+## TODOs
+
+Functional and non-functional considerations before this goes to production
+
+- Hash passwords
+- Don't return passwords from GET
+- Store passwords in a seperate data store so we can restrict access
+- Don't roll your own auth, use a service like Auth0
+- Don't trust created date from user, do this on the backend
+- Set up dynamo db storage layer
+- Write lambda handler, probably cheaper/simpler than running a server/container
+- Get a security expert to reivew
+- General peer review
+- Manual QA, by QA tester or stakeholders
+- Maybe speed up unit tests
+- Maybe remove 'sync' functions
+- Use API documenation system, such as swagger
+- Create postman collection
+- Set up HTTPS
+- Load/stress test, what is our expected scale?
+- Add monitoring, such as sentry or new relic
+- Ensure the application is secure, review OWASP top ten, run static analysis, potentially hire pen testers
+- Measure application performance and bottlenecks, plan for scale, but do not prematurely optimise
+- Branch/merge protections, rquire PR approval and CI pass
+- Internationalise? Are we unicode safe?
+- Ensure all technologies and libraries are up to date, on a regular basis, npm audit
+- Check for errors and warning on the terminal and web console during build/run
+- Add static anlysis and duplicate code detection
+- Add a database migration system
+- Formatting e.g. prettier
+- Infrastructure as code, e.g. terraform

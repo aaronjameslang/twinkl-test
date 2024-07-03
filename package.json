@@ -1,5 +1,5 @@
 {
-  "name": "twinkl-typescript-tech-test",
+  "name": "twinklr",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.ts",
     "test": "jest",
     "posttest": "npm run lint",
-    "test:localhost": "TEST_SERVER=http://localhost:3000 jest",
+    "test:build": "./build-test.sh",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },
