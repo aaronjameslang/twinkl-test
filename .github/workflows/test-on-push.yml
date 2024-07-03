@@ -1,6 +1,6 @@
 on: [push]
 jobs:
-  job0:
+  test-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v4
@@ -10,3 +10,12 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run lint
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: ./build-test.sh
