@@ -4,10 +4,15 @@ import { loadUser } from './loadUser';
 
 export function getUser(req: Request, res: Response) {
   const id = UserId.parse(req.params.id);
-  const user = loadUser(id);
-  if (!user) {
+  const record = loadUser(id);
+  if (!record) {
     res.sendStatus(404); // Not Found
     return;
   }
-  res.send(user);
+  const output = {
+    ...record,
+    digest: undefined,
+    salt: undefined,
+  };
+  res.send(output);
 }

@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
-import { User } from './User';
+import { UserRecord } from './User';
 
-export function loadUser(id: string): User | null {
+export function loadUser(id: string): UserRecord | null {
   const filename = `./data/users/${id}.json`;
   if (!existsSync(filename)) return null;
   const json = readFileSync(filename, 'utf-8');
